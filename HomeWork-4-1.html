@@ -1,0 +1,81 @@
+<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $2.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Work 4-1</title>
+    <style>
+      .input-faild {
+        margin: 30px auto;
+        width: 40%;
+        height: 30px;
+        color: mediumblue;
+        font-size: 1.1rem;
+      }
+      input[value="Check"] {
+        padding: 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="input-faild" />
+    <input type="button" value="Check" />
+    <ul></ul>
+
+    <script type="text/javascript">
+      // Variables
+      var inputFaild = document.querySelector(".input-faild ");
+      var CheckBtn = document.querySelector("input[value='Check']");
+      var List = document.querySelector("ul");
+      var NumberExp = new RegExp("\\d{5}", "g");
+      var DateExp = new RegExp("\\d[1-9]{1,2}\/\\d[1-9]{1,2}\/\\d{4,}", "g");
+      var IpExp = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g;
+      var UsdExp = /\$(\d*\.?\d*)/g;
+      var myArray = [];
+
+      const Check = () => {
+        List.innerHTML = "";
+        var str = inputFaild.value;
+
+        var resultUsdExp = str.match(UsdExp);
+        var ResultNumberExp = str.match(NumberExp);
+        var ResultDateExp = str.match(DateExp);
+        var ResultIpExp = str.match(IpExp);
+
+        var newList;
+        if (resultUsdExp) {
+          for (let usd of resultUsdExp) {
+            newList = `<li>${usd} - цены в долларах  </li>`;
+            List.insertAdjacentHTML("beforeEnd", newList);
+          }
+        }
+
+        if (ResultNumberExp) {
+          for (let num of ResultNumberExp) {
+            newList = `<li>${num} - numbers  </li>`;
+            List.insertAdjacentHTML("beforeEnd", newList);
+          }
+        }
+        if (ResultDateExp) {
+          for (let date of ResultDateExp) {
+            newList = `<li>${date} - дата  </li>`;
+            List.insertAdjacentHTML("beforeEnd", newList);
+          }
+        }
+        if (ResultIpExp) {
+          for (let ip of ResultIpExp) {
+            newList = `<li>${ip} -  ip адресс </li>`;
+            List.insertAdjacentHTML("beforeEnd", newList);
+          }
+        }
+      };
+
+      CheckBtn.addEventListener("click", Check);
+    </script>
+  </body>
+</html>
