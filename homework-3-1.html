@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+    <style>
+      #counter {
+        margin: auto;
+        height: 30px;
+        width: 50px;
+        border: 1px solid #4e4949;
+      }
+      .text-center {
+        text-align: center;
+        line-height: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+    <div class="text-center">
+      <div id="counter">0</div>
+      <input type="button" value="Start" />
+      <input type="button" value="Pause" />
+      <input type="button" value="Contenue" />
+      <input type="button" value="Reset" />
+    </div>
+    <script>
+      // Varaibles
+      var divCounter = document.getElementById("counter");
+      var StartBtn = document.querySelector("[value = 'Start']");
+      var PausetBtn = document.querySelector("[value = 'Pause']");
+      var contenueBtn = document.querySelector("[value = 'Contenue']");
+      var ResetBtn = document.querySelector("[value = 'Reset']");
+      var mycounter;
+
+      Counter = parseInt(divCounter.innerHTML);
+      console.log(Counter);
+
+      //   Functions
+      const doCount = () => {
+        mycounter = setInterval(() => {
+          Counter++;
+          divCounter.innerHTML = Counter;
+        }, 1000);
+      };
+
+      const startCount = () => {
+        doCount();
+      };
+      const pauseCount = () => {
+        clearInterval(mycounter);
+      };
+
+      const contenueCount = () => {
+        doCount();
+      };
+
+      const resetCount = () => {
+        clearInterval(mycounter);
+        Counter = 0;
+        doCount();
+      };
+
+      //   Event Listenre
+      StartBtn.addEventListener("click", startCount);
+      PausetBtn.addEventListener("click", pauseCount);
+      contenueBtn.addEventListener("click", contenueCount);
+      ResetBtn.addEventListener("click", resetCount);
+    </script>
+  </body>
+</html>

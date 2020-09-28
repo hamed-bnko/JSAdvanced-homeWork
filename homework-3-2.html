@@ -1,0 +1,73 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+    <style>
+      .input-faild {
+        margin: 30px auto;
+        width: 40%;
+        height: 30px;
+        color: mediumblue;
+        font-size: 1.1rem;
+      }
+      input[value="Check"] {
+        padding: 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="input-faild" />
+    <input type="button" value="Check" />
+    <ul></ul>
+
+    <script>
+      // Variables
+      var inputFaild = document.querySelector(".input-faild ");
+      var CheckBtn = document.querySelector("input[value='Check']");
+      var List = document.querySelector("ul");
+      var myExp = new RegExp("\\s+|,");
+      var findA = new RegExp("a", "gi");
+      var myArray;
+      //   Functions
+
+      const PeintList = (Items) => {
+        var newItem;
+        for (let item of Items) {
+          newItem = `
+                 <li>${item}</li>
+              `;
+          List.insertAdjacentHTML("beforeEnd", newItem);
+        }
+      };
+
+      const Check = () => {
+        var str = inputFaild.value;
+        myArray = str.split(myExp);
+
+        myArray[0] = myArray[0].toUpperCase();
+        myArray[myArray.length - 1] = myArray[myArray.length - 1].toLowerCase();
+        if (myArray.length > 2) {
+          myArray[myArray.length - 2] = myArray[
+            myArray.length - 2
+          ].toLowerCase();
+        }
+        PeintList(myArray);
+        var NumberOfA = 0;
+        var resultAll;
+        while ((resultAll = findA.exec(str)) != null) {
+          NumberOfA++;
+        }
+        alert("Number of A in String : " + NumberOfA);
+      };
+      CheckBtn.addEventListener("click", Check);
+    </script>
+  </body>
+</html>

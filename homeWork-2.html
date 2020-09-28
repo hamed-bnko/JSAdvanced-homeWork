@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Work -2</title>
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <div id="one">one</div>
+
+    <script>
+      // Добавьте после дива с id=one еще один див с текстом two и id=two
+      var firstElemsnt = document.getElementById("one");
+      var newone = document.getElementById("new");
+      var newItem = document.createElement("div");
+      newItem.setAttribute("id", "two");
+
+      newItem.innerText = "two";
+      firstElemsnt.insertAdjacentElement("afterEnd", newItem);
+      // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second
+
+      newItem.addEventListener("click", function () {
+        var newItem1 = document.createElement("div");
+        newItem1.setAttribute("id", "two-first");
+        newItem1.innerText = "two-first";
+        newItem.insertAdjacentElement("beforeBegin", newItem1);
+        newItem.setAttribute("id", "second-first");
+        newItem.innerText = "second-first";
+      });
+    </script>
+  </body>
+</html>

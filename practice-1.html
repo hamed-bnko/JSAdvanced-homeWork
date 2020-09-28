@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice 1</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      #form {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        align-content: space-around;
+
+        display: flex;
+        top: 0;
+        left: 0;
+        transition: all 0.5s ease-in-out;
+      }
+      #form form {
+        width: 500px;
+        height: 100px;
+        margin: 15px auto;
+        background-color: ivory;
+        padding: 10px;
+        z-index: 99;
+      }
+      .hide {
+        transform: translateY(-1000px);
+      }
+      .show {
+        transform: translateY(0);
+      }
+
+      form textarea {
+        width: 100%;
+      }
+      form input {
+        align-content: space-around;
+      }
+      #list {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        text-align: center;
+        line-height: 2.5rem;
+        z-index: 1;
+      }
+      li input {
+        cursor: pointer;
+      }
+      li input:hover {
+        color: red;
+      }
+
+      .edit {
+        background-image: url(https://cdn4.iconfinder.com/data/icons/software-menu-icons/256/SoftwareIcons-68-512.png);
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+        background-position: center center;
+        background-repeat: no-repeat;
+        outline: none;
+      }
+      .delete {
+        outline: none;
+        background-color: transparent;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hide" id="form">
+      <form>
+        <textarea placeholder="enter you Post"></textarea>
+        <input type="button" class="add" />
+        <input type="button" class="cancel" value="cancel" />
+      </form>
+    </div>
+    <div id="list">
+      <h1>List</h1>
+      <ul id="list-item"></ul>
+      <button id="additem">Add Post</button>
+    </div>
+    <script src="./practice-1.js"></script>
+  </body>
+</html>
