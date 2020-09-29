@@ -48,30 +48,25 @@
         var ResultIpExp = str.match(IpExp);
 
         var newList;
-        if (resultUsdExp) {
-          for (let usd of resultUsdExp) {
-            newList = `<li>${usd} - цены в долларах  </li>`;
+
+        const addToHtml = (ExpResult, title) => {
+          for (let result of ExpResult) {
+            newList = `<li>${result} - ${title}  </li>`;
             List.insertAdjacentHTML("beforeEnd", newList);
           }
+        };
+        if (resultUsdExp) {
+          addToHtml(resultUsdExp, "цены в долларах");
         }
 
         if (ResultNumberExp) {
-          for (let num of ResultNumberExp) {
-            newList = `<li>${num} - numbers  </li>`;
-            List.insertAdjacentHTML("beforeEnd", newList);
-          }
+          addToHtml(ResultNumberExp, "индекс");
         }
         if (ResultDateExp) {
-          for (let date of ResultDateExp) {
-            newList = `<li>${date} - дата  </li>`;
-            List.insertAdjacentHTML("beforeEnd", newList);
-          }
+          addToHtml(ResultDateExp, "дата");
         }
         if (ResultIpExp) {
-          for (let ip of ResultIpExp) {
-            newList = `<li>${ip} -  ip адресс </li>`;
-            List.insertAdjacentHTML("beforeEnd", newList);
-          }
+          addToHtml(ResultIpExp, "ip адресс");
         }
       };
 
