@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HomeWork</title>
+    <style>
+      #ball {
+        position: absolute;
+        z-index: 9;
+        background-color: #584b4b;
+        border: 1px solid #d3d3d3;
+        cursor: move;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+	1. back to top button; drag;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+    -->
+    <div id="ball"></div>
+
+    <script>
+      // dragElement(document.getElementById("ball"));
+
+      // function dragElement(elmnt) {
+      //   var pos1 = 0,
+      //     pos2 = 0,
+      //     pos3 = 0,
+      //     pos4 = 0;
+      //   elmnt.onmousedown = dragMouseDown;
+
+      //   function dragMouseDown(e) {
+      //     e.preventDefault();
+      //     pos3 = e.clientX;
+      //     pos4 = e.clientY;
+      //     document.onmouseup = closeDragElement;
+      //     // call a function whenever the cursor moves:
+      //     document.onmousemove = elementDrag;
+      //   }
+
+      //   function elementDrag(e) {
+      //     e.preventDefault();
+      //     // calculate the new cursor position:
+      //     pos1 = pos3 - e.clientX;
+      //     pos2 = pos4 - e.clientY;
+      //     pos3 = e.clientX;
+      //     pos4 = e.clientY;
+
+      //     // set the element's new position:
+      //     elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+      //     elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      //   }
+
+      //   function closeDragElement() {
+      //     // stop moving when mouse button is released:
+      //     document.onmouseup = null;
+      //     document.onmousemove = null;
+      //   }
+      // }
+
+      const Ball = document.getElementById("ball");
+      var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+
+      Ball.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = stopMoveAndDrag;
+        document.onmousemove = moveElement;
+      });
+
+      function moveElement(e) {
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        Ball.style.top = Ball.offsetTop - pos2 + "px";
+        Ball.style.left = Ball.offsetLeft - pos1 + "px";
+      }
+
+      function stopMoveAndDrag() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    </script>
+  </body>
+</html>

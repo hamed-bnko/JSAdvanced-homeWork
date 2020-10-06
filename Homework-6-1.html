@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HomeWork</title>
+    <style>
+      #ball {
+        position: absolute;
+        background: red;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+      }
+      button {
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 1rem;
+        font-size: 2rem;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+	1. back to top button; drag;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+    -->
+    <div id="ball"></div>
+    <button>pause</button>
+
+    <script>
+      const Ball = document.getElementById("ball");
+      let po = Ball.offsetLeft;
+      let myvar;
+      const Button = document.querySelector("button");
+      Ball.addEventListener("click", () => {
+        myvar = setInterval(() => {
+          if (po > window.screen.width) {
+            po = 8;
+          } else {
+            Ball.style.left = `${po}px`;
+            po = po + 5;
+          }
+        }, 20);
+      });
+      Button.addEventListener("click", () => {
+        clearInterval(myvar);
+      });
+    </script>
+  </body>
+</html>
