@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+    <style>
+      div {
+        border: fuchsia 1px solid;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 0.8rem;
+      }
+      div button {
+        padding: 0.3rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+    -->
+
+    <script>
+      window.onload = function () {
+        const Block = `<div> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illum labore quam nisi accusamus culpa non, tempore ducimus officiis minus nesciunt hic. Maiores eaque aliquid autem, porro ratione repudiandae temporibus. <button onclick="deleteDiv(this)">Delete</button> </div>`;
+        const Body = document.querySelector("body");
+
+        for (let i = 0; i <= 5; i++) {
+          Body.insertAdjacentHTML("beforeend", Block);
+        }
+        deleteDiv = (Button) => {
+          Button.parentElement.style.display = "none";
+        };
+      };
+    </script>
+  </body>
+</html>

@@ -1,28 +1,54 @@
 <!-- Доработайте пример, 005_thisExample.html, при наведении мыши к одному из блоков, цвет блока должен измениться, на уникальный, такой которого еще нету у существующих блоков. Также выведите в блок текстовое оповещение о информации цвета, который используется для фона данного блока. При попытке закрыть вкладку, придупредите пользователя о том что информация будет утеряна. Используйте window.onload.  -->
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Ключевое слово this</title>
     <style>
-        div {
-            background-color:green;
-            display: block;
-            height: 100px;
-            width: 100px;
-            margin: 10px;
-            /*float: left;*/
-        }
+      div {
+        background-color: green;
+        display: block;
+        height: 100px;
+        width: 100px;
+        margin: 10px;
+        /*float: left;*/
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
     <script>
+      var divArr = document.getElementsByTagName("div");
+      var COLOR = [
+        "red",
+        "black",
+        "teal",
+        "blue",
+        "yellow",
+        "white",
+        "green",
+        "salmon",
+        "darkblue",
+        "fuchsia",
+      ];
 
+      for (var i = 0; i < divArr.length; i++) {
+        divArr[i].onmousemove = function () {
+          var color = Math.floor(Math.random() * 10);
+          console.log(COLOR[color]);
+          this.style.backgroundColor = COLOR[color];
+        };
+      }
+
+      window.addEventListener("unload", logData, false);
+
+      function logData() {
+        alert("fuck off");
+      }
     </script>
-</body>
+  </body>
 </html>
