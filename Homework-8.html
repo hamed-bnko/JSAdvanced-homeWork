@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+    <form>
+        <input type="text" name="login"  />
+        <button id="btn1" href="#" >Login</button>
+    </form>
+    <div>
+        <h1 id="title"></h1>
+        <form><button id="btn2" >Log Out</button></form>
+        
+    </div>
+
+<script>
+  window.onload = function(){
+      var myLogin =  window.localStorage.getItem("Login");
+      var myInput =  document.querySelector("input")
+      var MyForm = document.querySelector("form")
+      var MyPage = document.querySelector("div")
+
+      var InputFaild;
+      if(myLogin && myLogin == "Admin" || myLogin == "admin" ){
+         MyForm.style.display = "none"
+         MyPage.style.display = "block"
+         document.getElementById("title").innerHTML ="Welcome " + myLogin
+      }else{
+         MyForm.style.display = "block"
+         MyPage.style.display = "none"    
+      }
+
+   myInput.addEventListener("input",(e)=>{
+        InputFaild = e.target.value
+    })
+    
+document.getElementById("btn1").addEventListener("click" ,() =>{
+        
+        if(InputFaild == "Admin" || InputFaild == "admin" ){
+            document.cookie =`Login=${InputFaild}`
+            window.localStorage.setItem("Login", InputFaild); 
+            return console.log(InputFaild == "Admin")
+            myInput.value=""
+        } else{
+        alert("faild to login")
+        myInput.value =""
+        }
+    })
+     
+    document.querySelector("#btn2").addEventListener("click" , ()=>{
+        console.log("object")
+        window.localStorage.removeItem("Login"); 
+    })
+    
+  
+
+    
+  }
+
+   
+   
+   
+</script>
+</body>
+</html>

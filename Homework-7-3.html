@@ -1,0 +1,57 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+    <script>
+        function Man(place , food , drink){
+            this.place = place;
+            this.food =food;
+            this.drink =drink;
+          
+        }
+        function Soldier(place , food , drink){
+            this.place = place;
+            this.food =food;
+            this.drink =drink;
+            this.shoot = function(){
+                console.log("Shooting")
+            }
+        }
+        function Doctor(place , food , drink){
+            this.place = place;
+            this.food =food;
+            this.drink =drink;
+            this.Cure = function(){
+                console.log("Cure")
+            }
+        }
+
+        Soldier.prototype = new Man()
+        Doctor.prototype = new Man()
+
+
+        const doctor = new Doctor("home" ,"Hot Dog" , "Coka Cola")
+        const doctorDentest = new Doctor("home" ,"Hot Dog" , "Coka Cola")
+        doctorDentest.Cure = function(){
+            console.log("Treat teeth")
+        }
+        const doctorSurgery = new Doctor("home" ,"Hot Dog" , "Coka Cola")
+        doctorSurgery.Cure = function(){
+            console.log("Perform Operation")
+        }
+
+        console.log(doctor.Cure())
+        console.log(doctorSurgery.Cure())
+        console.log(doctorDentest.Cure())
+
+        
+
+
+    </script>
+</body>
+</html>
